@@ -11,6 +11,24 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'vimwiki/vimwiki'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+
+" COC stuff
+" main one
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+" lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+" Need to **configure separately**
+
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+" - shell repl
+" - nvim lua api
+" - scientific calculator
+" - comment banner
+" - etc
 
 call plug#end()
 
@@ -70,6 +88,9 @@ map <C-m> :NERDTreeToggle<CR>
 
 nnoremap <C-[> :tabprevious<CR>
 nnoremap <C-]> :tabnext<CR>
+
+" Activate COQ
+map <C-c> :COQnow --shut-up<CR>
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
