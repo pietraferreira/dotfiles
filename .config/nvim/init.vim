@@ -10,27 +10,33 @@ Plug 'sainnhe/edge'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'neovim/nvim-lspconfig'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 
 " COC stuff
 " main one
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-" 9000+ Snippets
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+"Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+"" 9000+ Snippets
+"Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
-" lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-" Need to **configure separately**
+"" lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+"" Need to **configure separately**
 
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+"Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " - shell repl
 " - nvim lua api
 " - scientific calculator
 " - comment banner
 " - etc
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
+
+" Require plugin configs (lua)
+"lua require('hanato')
 
 " My settings
 let mapleader=","
@@ -40,19 +46,16 @@ set ruler
 syntax on
 set number                  " line numbers
 set autoread                " automatically reload files changed outside of Vim
-
 set nowrap
 set textwidth=80
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-
 set incsearch               " match as i type
 set ignorecase
 set smartcase
 set showmatch               " when bracket is inserted, jump to matching
-
 set noerrorbells
 set smartindent
 set noswapfile
@@ -61,13 +64,62 @@ set scrolloff=8             " start scrolling 8 before the end of page
 set guicursor=              " dont have the ugly insert cursor
 set nohlsearch              " dont keep search highlighted please
 set colorcolumn=80          " little column so i know the limit
-
 set formatoptions-=ro       " for example if i make a comment, dont make the
                             " next line a comment too
+" CoC stuff 
+set updatetime=300
+set shortmess+=c
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
 colorscheme edge
 
 " For nerdcommenter
 filetype plugin on
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 " My mappings :)
 " Telescope stuff
@@ -78,19 +130,20 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+"nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+"nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+"nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " Activate nerd tree
 map <C-m> :NERDTreeToggle<CR>
 
+" Tabs
 nnoremap <C-[> :tabprevious<CR>
 nnoremap <C-]> :tabnext<CR>
 
 " Activate COQ
-map <C-c> :COQnow --shut-up<CR>
+"map <C-c> :COQnow --shut-up<CR>
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
