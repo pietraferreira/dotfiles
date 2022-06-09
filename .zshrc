@@ -99,3 +99,9 @@ alias edit-vim='vim /Users/pietraferreira/.config/nvim/init.vim'
 alias reload-vim='source /Users/pietraferreira/.config/nvim/init.vim'
 alias vim='nvim'
 alias config='/usr/bin/git --git-dir=/Users/pietraferreira/.cfg/ --work-tree=/Users/pietraferreira'
+export PATH="/usr/local/sbin:$PATH"
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
+
+export GOPATH=/Users/pietraferreira/go
+export PATH=$GOPATH/bin:$PATH
+export PATH="/usr/local/opt/ruby/bin:$PATH"

@@ -94,10 +94,15 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " ---- My mappings :)
 " Telescope maps
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fk <cmd>lua require('telescope.builtin').keymaps()<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " COC maps
 nmap <silent> gd <Plug>(coc-definition)
@@ -108,7 +113,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Activate nerd tree
-map <C-m> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Tabs
 nnoremap <C-[> :tabprevious<CR>
@@ -149,5 +154,5 @@ let g:airline_theme='fruit_punch'
 " VimWiki 
 " Run multiple wikis
 let g:vimwiki_list = [
-                        \{'path': '~/Documents/VimWiki/personal.wiki',
+                        \{'path': '~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/notes-vault',
                          \ 'syntax': 'markdown', 'ext': '.md'}]
