@@ -143,4 +143,6 @@ return require('packer').startup(function()
    'tami5/lspsaga.nvim',
    cmd = 'Lspsaga'
  }
+ 
+ use { 'mfussenegger/nvim-jdtls' }
 end)

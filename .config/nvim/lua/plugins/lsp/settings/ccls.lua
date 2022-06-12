@@ -1,5 +1,4 @@
-local lspconfig = require'lspconfig'
-lspconfig.ccls.setup {
+local opts =  {
   init_options = {
     compilationDatabaseDirectory = "build";
     index = {
@@ -8,5 +7,9 @@ lspconfig.ccls.setup {
     clang = {
       excludeArgs = { "-frounding-math"} ;
     };
-  }
+    cache = {
+      directory = ".ccls-cache";
+    };
+  },
 }
+return opts

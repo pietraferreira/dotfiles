@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua" }
+local servers = { "jsonls", "sumneko_lua", "jdtls", "ccls" }
 
 lsp_installer.setup {
 	ensure_installed = servers
@@ -20,5 +20,6 @@ for _, server in pairs(servers) do
 	if has_custom_opts then
 	 	opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
 	end
+
 	lspconfig[server].setup(opts)
 end
