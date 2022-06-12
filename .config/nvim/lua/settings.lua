@@ -27,8 +27,8 @@ set.number = true
 set.numberwidth = 2
 set.relativenumber = false
 
--- Set signcolumn to false
-vim.opt.signcolumn = "no"
+-- Always show the column else it would shift the text each time
+vim.opt.signcolumn = "yes"
 
 -- Remove showing mode.
 set.showmode = false
