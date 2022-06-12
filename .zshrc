@@ -105,3 +105,4 @@ alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
 export GOPATH=/Users/pietraferreira/go
 export PATH=$GOPATH/bin:$PATH
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
