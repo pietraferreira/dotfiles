@@ -73,7 +73,7 @@ local buttons = {
         button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
         button("p", "  Projects", ":e ~/Projects/ <CR>"),
         button("d", "  Documents", ":e ~/Documents/ <CR>"),
-        button("q", "  Quit"),
+        button("q", "  Quit", ":q <CR>"),
     },
     opts = {
         spacing = 1,
