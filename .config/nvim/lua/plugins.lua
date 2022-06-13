@@ -193,4 +193,12 @@ return require('packer').startup(function(use)
       vim.g.matchup_matchparen_offscreen = {}
     end
   })
+  -- This plugin adds indentation guides to all lines (including empty lines).
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufRead", "BufNewFile" },
+    config = function()
+      require("plugins.indent-blankline")
+    end
+  })
 end)
