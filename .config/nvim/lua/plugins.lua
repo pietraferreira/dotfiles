@@ -161,4 +161,36 @@ return require('packer').startup(function(use)
       require("plugins.lualine")
     end,
   })
+  -- Neovim plugin to comment in/out text.
+  use({
+    "b3nj5m1n/kommentary",
+    keys = {
+      "<Plug>kommentary_line_default",
+      "<Plug>kommentary_visual_default",
+    },
+    config = function()
+      require("plugins.kommentary")
+    end
+  })
+  use({
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    after = "nvim-treesitter"
+  })
+  -- Icons.
+  use({
+    "kyazdani42/nvim-web-devicons",
+    event = { "BufRead", "BufNewFile" },
+    config = function()
+      require("plugins.nvim_web_devicons")
+    end
+  })
+
+  -- match-up is a plugin that lets you highlight, navigate, and operate on sets of matching text.
+  use({
+    "andymass/vim-matchup",
+    event = { "BufRead", "BufNewFile" },
+    config = function()
+      vim.g.matchup_matchparen_offscreen = {}
+    end
+  })
 end)

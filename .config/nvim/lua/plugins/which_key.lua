@@ -1,5 +1,3 @@
-local is_plugin_installed = require("utils").is_plugin_installed
-
 require("which-key").setup {
   plugins = {
     marks = false,
@@ -140,3 +138,10 @@ local terminal_maps = {
   },
 }
 which_key.register(terminal_maps, { prefix = "<leader>" })
+
+which_key.register({
+  ["c"] = { "<Plug>kommentary_line_default", "Comment" },
+}, { prefix = "<leader>", noremap = false })
+which_key.register({
+  ["c"] = { "<Plug>kommentary_visual_default", "Comment" },
+}, { prefix = "<leader>", noremap = false, mode = "v" })
