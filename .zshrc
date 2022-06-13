@@ -106,3 +106,4 @@ export GOPATH=/Users/pietraferreira/go
 export PATH=$GOPATH/bin:$PATH
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="/Users/pietraferreira/.cargo/bin:$PATH"

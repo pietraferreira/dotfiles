@@ -13,7 +13,7 @@ packer.init {
   },
 }
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'folke/tokyonight.nvim'
@@ -151,8 +151,14 @@ return require('packer').startup(function()
     "akinsho/toggleterm.nvim",
     keys = "<C-t>",
     config = function()
-      require("plugins/toggleterm")
+      require("plugins.toggleterm")
     end,
   })
-
+  use({
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require("plugins.lualine")
+    end,
+  })
 end)
