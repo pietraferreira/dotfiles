@@ -31,20 +31,20 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    event = { 'BufRead', 'BufNewFile'},
+    event = { 'BufRead', 'BufNewFile' },
     cmd = {
       "TSInstall",
-        "TSInstallInfo",
-        "TSInstallSync",
-        "TSUninstall",
-        "TSUpdate",
-        "TSUpdateSync",
-        "TSDisableAll",
-        "TSEnableAll",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSDisableAll",
+      "TSEnableAll",
     },
-   confid = function()
-     require('plugins.treesitter')
-   end
+    confid = function()
+      require('plugins.treesitter')
+    end
   }
   use {
     'norcalli/nvim-colorizer.lua',
@@ -54,7 +54,7 @@ return require('packer').startup(function()
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = { { 'nvim-lua/plenary.nvim' } },
     config = function()
       require('plugins.telescope')
     end
@@ -119,30 +119,40 @@ return require('packer').startup(function()
       require('plugins.lsp')
     end
   }
-  
+
   use { 'williamboman/nvim-lsp-installer' }
   use { 'tamago324/nlsp-settings.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
 
- use {
-   'goolord/alpha-nvim',
-   requires = { 'kyazdani42/nvim-web-devicons' },
-   config = function ()
-       require'alpha'.setup(require'plugins.alpha'.config)
-   end
- } 
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require 'alpha'.setup(require 'plugins.alpha'.config)
+    end
+  }
 
- use {
-  'lewis6991/gitsigns.nvim',
-  config = function()
-    require('plugins.gitsigns')
-  end
- }
- 
- use {
-   'tami5/lspsaga.nvim',
-   cmd = 'Lspsaga'
- }
- 
- use { 'mfussenegger/nvim-jdtls' }
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('plugins.gitsigns')
+    end
+  }
+
+  use {
+    'tami5/lspsaga.nvim',
+    cmd = 'Lspsaga'
+  }
+
+  use { 'mfussenegger/nvim-jdtls' }
+
+  -- Terminal.
+  use({
+    "akinsho/toggleterm.nvim",
+    keys = "<C-t>",
+    config = function()
+      require("plugins/toggleterm")
+    end,
+  })
+
 end)

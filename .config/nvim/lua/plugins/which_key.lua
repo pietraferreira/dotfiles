@@ -125,3 +125,18 @@ which_key.register ({
     },
   },
 }, { prefix = "<leader>" })
+
+-- Terminal.
+local terminal_maps = {
+  t = {
+    name = "Terminal",
+    f = { ":ToggleTerm direction=float<CR>", "Float" },
+    h = { ":ToggleTerm direction=horizontal<CR>", "Horizontal" },
+    v = { ":ToggleTerm direction=vertical<CR>", "Vertical" },
+    l = { ":lua _LAZYGIT_TOGGLE()<cr>", "LazyGit" },
+    n = { ":lua _NODE_TOGGLE()<cr>", "Node" },
+    H = { ":lua _HTOP_TOGGLE()<cr>", "Htop" },
+    p = { ":lua _PYTHON3_TOGGLE()<cr>", "Python3" },
+  },
+}
+which_key.register(terminal_maps, { prefix = "<leader>" })
