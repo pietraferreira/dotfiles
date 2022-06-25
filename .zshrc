@@ -101,6 +101,10 @@ alias vim='nvim'
 alias config='/usr/bin/git --git-dir=/Users/pietraferreira/.cfg/ --work-tree=/Users/pietraferreira'
 export PATH="/usr/local/sbin:$PATH"
 alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
+alias weather='curl wttr.in/Poole'
+alias lyrics='swaglyrics --cli'
+alias s='s -p google'
+alias starwars='telnet towel.blinkenlights.nl'
 
 export GOPATH=/Users/pietraferreira/go
 export PATH=$GOPATH/bin:$PATH

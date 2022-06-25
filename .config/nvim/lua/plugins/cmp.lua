@@ -15,6 +15,11 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
+local icons = require "plugins.icons"
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", {fg ="#FDE030"})
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
@@ -100,6 +105,17 @@ cmp.setup {
       -- Kind icons
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+
+      if entry.source.name == "copilot" then
+        vim_item.kind = icons.git.Octoface
+        vim_item.kind_hl_group = "CmpItemKindCopilot"
+      end
+
+      if entry.source.name == "emoji" then
+        vim_item.kind = icons.misc.Smiley
+        vim_item.kind_hl_group = "CmpItemKindEmoji"
+      end
+
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
@@ -110,10 +126,12 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "emoji" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

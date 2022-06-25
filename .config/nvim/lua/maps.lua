@@ -1,6 +1,5 @@
 -- Make mapping easier
 local map = require("utils").map
-local Gitsigns  = package.loaded.gitsigns
 
 -- Map leader key
 vim.g.mapleader = ","
@@ -14,6 +13,11 @@ map("n", "<Leader>N", ":setlocal number!<CR>", { silent = true })
 
 -- Nvim Tree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
+
+-- GitHub Copilot
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+map("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- Gitsigns
 -- map('n', '<Leader>hs', ':Gitsigns stage_hunk<CR>', { silent = true })

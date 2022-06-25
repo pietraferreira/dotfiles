@@ -1,10 +1,5 @@
 -- Defining alias for vim.opt.
 local set = vim.opt
-local exec = vim.api.nvim_exec
-
--- Defining alias for some functions.
--- local is_plugin_installed = require("utils").is_plugin_installed
-local autocmd = vim.api.nvim_create_autocmd
 
 -- Choose theme
 vim.cmd[[colorscheme tokyonight]]

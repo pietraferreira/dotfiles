@@ -13,6 +13,8 @@ packer.init {
   },
 }
 
+vim.g.copilot_node_command = "/usr/local/bin/node"
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -201,4 +203,20 @@ return require('packer').startup(function(use)
       require("plugins.indent-blankline")
     end
   })
+
+  --use 'github/copilot.vim'
+  use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("plugins.copilot")
+      end, 100)
+    end,
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    module = "copilot_cmp",
+  }
+
 end)
