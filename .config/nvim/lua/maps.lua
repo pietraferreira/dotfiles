@@ -19,6 +19,9 @@ vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 map("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+-- Indent Blank-Line
+map("n", "<Leader>B", ":IndentBlanklineToggle<CR>", { silent = true })
+
 -- Gitsigns
 -- map('n', '<Leader>hs', ':Gitsigns stage_hunk<CR>', { silent = true })
 -- map('n', '<Leader>hr', ':Gitsigns reset_hunk<CR>', { silent = true })
