@@ -105,6 +105,7 @@ alias weather='curl wttr.in/Poole'
 alias lyrics='swaglyrics --cli'
 alias s='s -p google'
 alias starwars='telnet towel.blinkenlights.nl'
+alias tree='tree -a'
 
 export GOPATH=/Users/pietraferreira/go
 export PATH=$GOPATH/bin:$PATH
